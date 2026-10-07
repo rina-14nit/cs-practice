@@ -14,7 +14,14 @@ def ranking(names, scores):
         pari.append([scores[i], names[i]])
         pari.sort(reverse = True)
         for i in pari:
-            return i[0]
+            return i[1]
+def above_average(names, scores):
+    avg = average(scores)
+    res = []
+    for i in range(len(names)):
+        if scores[i] > avg:
+            res.append(names[i])
+    return res
 
 if __name__ == "__main__":
     names = ["Аня", "Боря", "Вика", "Арина"]
@@ -22,3 +29,4 @@ if __name__ == "__main__":
     print(winner(names, scores))
     print(average(scores))
     print(ranking(names, scores))
+    print(above_average(names, scores))
