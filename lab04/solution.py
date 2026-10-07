@@ -12,11 +12,11 @@ def ranking(names, scores):
     pari = []
     for i in range(len(names)):
         pari.append([scores[i], names[i]])
-        pari.sort(key=lambda x: (-x[0], x[1]))
-        res = []
-        for item in pari:
-            res.append(item[1])
-        return res
+    pari.sort(key=lambda x: (-x[0], x[1]))
+    res = []
+    for item in pari:
+        res.append(item[1])
+    return res
 def above_average(names, scores):
     avg = average(scores)
     res = []
