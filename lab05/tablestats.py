@@ -1,8 +1,15 @@
 def read_rows(lines):
-    result = []
+    rows = []
+    header = ""
     for line in lines:
-        line == line.strip()
-        if line == "":
+        line = line.strip()
+        values = line.split(",")
+        clean_values = []
+        [clean_values.append(v.strip()) for v in values]
+        if header == "":
+            header = clean_values
             continue
-
-def count_types(rows):
+        if len(clean_values) != len(headers):
+            continue
+        rows.append(dict(zip(header, clean_values)))
+    return rows
