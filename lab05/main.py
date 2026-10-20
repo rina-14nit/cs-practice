@@ -1,6 +1,13 @@
-with open(path, encoding="utf-8") as table:
-    rows = read_rows(table)
-    
+from tablestats import read_rows, count_types, total_minutes, to_csv
 
-with open("summary.csv", "w", encoding="utf-8") as out:
-    out.write(to_csv(counts))
+filename = input()
+
+with open(filename, 'r', encoding="utf-8") as table:
+    rows = read_rows(table.readlines())
+    print(len(rows))
+    print(len(count_types(rows)))
+    print(total_minutes(rows, 'ошибка'))
+
+with open("summary.csv", "w", encoding="utf-8") as outcome:
+    counts = count_types(rows)
+    outcome.write(to_csv(counts))
