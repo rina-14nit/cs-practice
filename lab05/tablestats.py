@@ -12,7 +12,7 @@ def read_rows(lines):
             if elem.strip():
                 row.append(elem.strip())
         if len(row) == len(headers):
-        rows.append({headers[i]: row[i] for i in range(len(headers))})
+            rows.append({headers[i]: row[i] for i in range(len(headers))})
     return rows
 
 def count_types(rows):
@@ -30,3 +30,9 @@ def total_minutes(rows, kind):
             except ValueError:
                 continue
     return round(minutes, 1)
+
+def to_csv(counts):
+    s = 'тип, количество\n'
+    for key, value in sorted(counts.items()):
+        s += f'{key}, {value}\n'
+    return s
