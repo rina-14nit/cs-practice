@@ -15,3 +15,18 @@ def read_rows(lines):
         rows.append({headers[i]: row[i] for i in range(len(headers))})
     return rows
 
+def count_types(rows):
+    cnt = dict()
+    for elem in rows:
+        cnt[elem['тип']] = cnt.get(elem['тип'], 0) + 1
+    return cnt
+
+def total_minutes(rows, kind):
+    minutes = 0.0
+    for elem in rows:
+        if elem['тип'] == kind:
+            try:
+                minutes += float(elem['минуты'].replace(',', '.'))
+            except ValueError:
+                continue
+    return round(minutes, 1)
