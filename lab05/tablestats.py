@@ -32,8 +32,6 @@ def total_minutes(rows, kind):
     return round(minutes, 1)
 
 def to_csv(counts):
-    if not counts:
-        return ""
     s = 'тип,количество\n'
     for key, value in sorted(counts.items()):
         s += f'{key},{value}\n'
