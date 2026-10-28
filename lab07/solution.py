@@ -10,7 +10,12 @@ def block(matrix, rows, columns):
     arr = np.asarray(matrix, dtype = float)
     return arr[np.ix_(rows, columns)].tolist()
 
-
+def column_means(matrix):
+    if matrix == []:
+        return []
+    arr = np.asarray(matrix, dtype  = float)
+    means = np.mean(arr, axis = 0)
+    return np.round(means, 6).tolist()
 
 if __name__ == "__main__":
     values = [12, 14.5, 11, 13, 15.5, 10.5]
@@ -19,3 +24,4 @@ if __name__ == "__main__":
     columns = [1, 2]
     print(reshape_rows(values, 3))
     print(block(matrix, rows, columns))
+    print(column_means(matrix))
