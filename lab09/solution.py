@@ -13,8 +13,26 @@ def vector_report(values: list[float]) -> dict:
     "reversed": arr[::-1].tolist(),
     }
 
+def change_vector(values: list[float]) -> list[float]:
+    arr = np.asarray(values, dtype = float).copy()
+    arr[2:4] = 99
+    arr[::2] = -1
+    return arr.tolist()
+
+def cap_above(values: list[float], limit: float) -> list[float]:
+    arr = np.asarray(values, dtype = float)
+    arr[arr > limit] = limit
+    return arr.tolist()
+
+def celsius_to_fahrenheit(values: list[float]) -> list[float]:
+    arr = np.asarray(values, dtype = float)
+    return (arr * 9 / 5 + 32).tolist()
+
 
 if __name__=="__main__":
     values = [0, 3, 6, 9, 12, 15, 18, 21]
     print(make_hours())
     print (vector_report(values))
+    print(change_vector(values))
+    print(cap_above(values, 5))
+    print (celsius_to_fahrenheit(values))
